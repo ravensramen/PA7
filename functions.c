@@ -242,6 +242,29 @@ int determine_three(Hand* player, Hand* selection_array) {
     return triple;
 }
 
+//Function Name: int determine_full_house(int pair, int triple)
+//Description: Determines if hand contains a full house.
+//Parameters: Pair and triple score variables. 
+//Output: Returns a 1 if full house detected, otherwise returns a zero. 
+
+int determine_full_house(int pair, int triple) {
+    int full_house = 0;
+    if ((pair == 1) && (triple == 1)) {
+        full_house = 1; //if a pair and a triple are in hand
+    }
+    else {
+        full_house = 0; //if a pair and triple aren't in hand
+    }
+
+    if (full_house == 1) {
+        printf("Full house! \n");
+    }
+    else {
+        printf("No full house in hand \n");
+    }
+}
+
+
 //Function Name: int determine_four(Hand* player, Hand* selection_array)
 //Description: Determines if hand contains four of a kind. 
 //Parameters: Player hand struct, selection struct. 
@@ -353,7 +376,7 @@ int determine_straight(Hand* player, Hand* selection_array)
 //Parameters: Each player's hand, pointer to winner variable, variables of each score type. 
 //Output: Updates winner variable in main.
 
-void determine_winner(Hand* player_1, Hand* player_2, int* winner, int pair_p1, int pair_p2, int three_of_a_kind_p1, int three_of_a_kind_p2, int four_of_a_kind_p1, int four_of_a_kind_p2, int flush_p1, int flush_p2, int straight_p1, int straight_p2) {
+void determine_winner(Hand* player_1, Hand* player_2, int* winner, int pair_p1, int pair_p2, int three_of_a_kind_p1, int three_of_a_kind_p2, int full_house_p1, int full_house_p2, int four_of_a_kind_p1, int four_of_a_kind_p2, int flush_p1, int flush_p2, int straight_p1, int straight_p2) {
     int score_player1 = 0, score_player2 = 0; //scores of each player
     int higher_face = 0; //compare face values if both players have the same score type -> greater face value wins
 
@@ -364,6 +387,9 @@ void determine_winner(Hand* player_1, Hand* player_2, int* winner, int pair_p1, 
         score_player1++;
     }
     else if (four_of_a_kind_p1 > four_of_a_kind_p2) {
+        score_player1++;
+    }
+    else if (full_house_p1 > full_house_p2) {
         score_player1++;
     }
     else if (three_of_a_kind_p1 > three_of_a_kind_p2) {
