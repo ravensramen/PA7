@@ -6,9 +6,9 @@ int main() {
     Hand player1, player2, selection_array, selection_array2 = { 0,0,0,0,0 }; //hand struct initialization
 
     //scoring variables
-    int pair_p1, three_of_a_kind_p1, four_of_a_kind_p1, flush_p1, straight_p1,
+    int pair_p1, three_of_a_kind_p1, four_of_a_kind_p1, full_house_p1, flush_p1, straight_p1,
 
-        pair_p2, three_of_a_kind_p2, four_of_a_kind_p2, flush_p2, straight_p2;
+        pair_p2, three_of_a_kind_p2, four_of_a_kind_p2, full_house_p2, flush_p2, straight_p2;
 
     int menu = 1; //menu choice variable
     int current_player = 1; //for print statements to specify which player
@@ -66,6 +66,7 @@ int main() {
             printf("\nDetermining scores for the dealer: \n\n"); //prints dealers scoring result to console
             pair_p2 = determine_pair(&player2, &selection_array2);
             three_of_a_kind_p2 = determine_three(&player2, &selection_array2);
+            full_house_p2 = determine_full_house(pair_p2, three_of_a_kind_p2);
             four_of_a_kind_p2 = determine_four(&player2, &selection_array2);
             flush_p2 = determine_flush(&player2, &selection_array2);
             straight_p2 = determine_straight(&player2, &selection_array2);
@@ -75,6 +76,7 @@ int main() {
             printf("\nDetermining your score: \n\n"); //prints scoring result to console
             pair_p1 = determine_pair(&player1, &selection_array);
             three_of_a_kind_p1 = determine_three(&player1, &selection_array);
+            full_house_p1 = determine_full_house(pair_p1, three_of_a_kind_p1);
             four_of_a_kind_p1 = determine_four(&player1, &selection_array);
             flush_p1 = determine_flush(&player1, &selection_array);
             straight_p1 = determine_straight(&player1, &selection_array);
@@ -85,7 +87,7 @@ int main() {
 
             //determines winner by checking which score types were satisfied by each players hand
             //if the same method is satisfied (i.e both have a pair -> checks for highest face value)
-            determine_winner(&player1, &player2, &winner, pair_p1, pair_p2, three_of_a_kind_p1, three_of_a_kind_p2, four_of_a_kind_p1, four_of_a_kind_p2, flush_p1, flush_p2, straight_p1, straight_p2);
+            determine_winner(&player1, &player2, &winner, pair_p1, pair_p2, three_of_a_kind_p1, three_of_a_kind_p2, full_house_p1, full_house_p2, four_of_a_kind_p1, four_of_a_kind_p2, flush_p1, flush_p2, straight_p1, straight_p2);
 
             //house wins
             if (winner == 0) {
