@@ -81,6 +81,13 @@ int determine_three(Hand* player, Hand* selection_array);
 
 int determine_four(Hand* player, Hand* selection_array);
 
+//Function Name: int determine_full_house(int pair, int triple)
+//Description: Determines if hand contains a full house.
+//Parameters: Pair and triple score variables. 
+//Output: Returns a 1 if full house detected, otherwise returns a zero. 
+
+int determine_full_house(int pair, int triple);
+
 //Function Name: int determine_flush(Hand* player, Hand* selection_array)
 //Description: Determines if player's hand contains a flush (a;; suits match)
 //Parameters: Player hand struct, selection array. 
@@ -100,7 +107,7 @@ int determine_straight(Hand* player, Hand* selection_array);
 //Parameters: Each player's hand, pointer to winner variable, variables of each score type. 
 //Output: Updates winner variable in main.
 
-void determine_winner(Hand* player_1, Hand* player_2, int* winner, int pair_p1, int pair_p2, int three_of_a_kind_p1, int three_of_a_kind_p2, int four_of_a_kind_p1, int four_of_a_kind_p2, int flush_p1, int flush_p2, int straight_p1, int straight_p2);
+void determine_winner(Hand* player_1, Hand* player_2, int* winner, int pair_p1, int pair_p2, int three_of_a_kind_p1, int three_of_a_kind_p2, int full_house_p1, int full_house_p2, int four_of_a_kind_p1, int four_of_a_kind_p2, int flush_p1, int flush_p2, int straight_p1, int straight_p2);
 
 
 //Function Name: void redraw_dealer(Hand* player, Hand* selection_array, int wDeck[][13], const char* wFace[], const char* wSuit[]){
